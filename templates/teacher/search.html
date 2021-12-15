@@ -1,0 +1,62 @@
+<style>
+
+.search{
+	position:absolute;
+	top:100px;
+	left:100px;
+	align:center;
+}
+.tbl{
+	position:absolute;
+	margin: 120px 50px 50px;
+	padding 5px 5px 5px 5px;
+}
+</style>
+{% extends 'main.html'%}
+{% block content %}
+<div class="search">
+	<form method="get" enctype="multipart/form-data" action='/search'>
+<div class="input-group">
+  <div class="form-outline">
+    <input type="search" id="query" name="query" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Search
+    <i class="fas fa-search"></i>
+  </button>
+</form>
+</div>
+</div>
+<div class="tbl">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">username</th>
+      <th scope="col">Name</th>
+      <th scope="col">Proposal link</th>
+      <th scope="col">proposal status</th>
+      <th scope="col">git url</th>
+      <th scope="col">Report link</th>
+      <th scope="col">report status</th>
+      <th scope="col">updated time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th scope="row">{{student.id}}</th>
+      <td><a href="/selection/{{student.id}}"> {{student.unique_name}}</a></td>
+      <td>{{student.name}}</td>
+      <td><a href="/media/{{student.proposal_file}}" target="_blank">Proposal</a></td>
+      <td>{{student.selected_proposal_condition}}</td>
+      <td><a href="{{student.git_url}}">{{student.git_url}}</a></td>
+      <td><a href="/media/{{student.report_file}}" target="_blank">Report</a></td>
+      <td>{{student.selected_report_condition}}</td>
+      <td>{{student.updated_date}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <a href="delete/{{student.id}}">Delete</a> -->
+</br>
+</div>
+{% endblock %}

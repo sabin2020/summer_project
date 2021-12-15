@@ -1,0 +1,110 @@
+{% extends 'main.html'%}
+{% block content %}
+<div class="container">
+
+<form method="post" class="well form-horizontal" enctype="multipart/form-data" action='/project_update_submission/{{student.id}}'>
+{% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<legend>New Project</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Name</label>
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="name" value="{{student.name}}" placeholder="Full Name" class="form-control"  type="text">
+<!-- 	name:<input type="text" name="name"></br> -->
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Proposal:</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	<input type="file"  name="proposal_file"></br>
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label">Git URL</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input name="git_url" placeholder="Git URL" value="{{student.git_url}}" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- Text area -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Refernces</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        	<textarea class="form-control" value="{{student.references}}" name="reference" placeholder="Refernces"></textarea>
+  </div>
+  </div>
+</div>
+
+<!-- Text area -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Tools</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        	<textarea class="form-control" value="{{student.tools}}" name="tools" placeholder="Tools Used"></textarea>
+  </div>
+  </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Report</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+	<input type="file" name="report_file">
+  </div>
+</div>
+
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Update <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+<!-- 	ref:<input type="text" name="reference"></br> -->
+<!-- 	tools<input type="text" name="tools"></br> -->
+<!-- 	<input type="submit"/> -->
+<!-- </form> -->
+
+{% endblock%}
+<!-- 	<input type="file" name="proposal_file"></br> -->
+<!-- 	Name:<input type="text" name="name" "></br> -->
+<!-- 	git_url:<input type="text" name="git_url"></br> -->
+<!-- 	ref:<input type="text" name="reference"></br> -->
+<!-- 	tools<input type="text" name="tools""></br> -->
+<!-- 	<input type="file" name="report_file"></br> -->
+<!-- 	<input type="submit"/> -->
+<!-- </form> -->

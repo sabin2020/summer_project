@@ -1,0 +1,85 @@
+	    <style>
+
+.search{
+	position:absolute;
+	top:100px;
+	left:100px;
+	align:center;
+}
+.tbl{
+	position:absolute;
+	margin: 120px 50px 50px;
+	padding 5px 5px 5px 5px;
+}
+.add{
+	display:flex;
+	position:absolute;
+	top:100px;
+	left: 150px;
+	justify-content:space-between;
+	flex-direction:row;
+}
+</style>
+{% extends 'main.html'%}
+{% block content %}
+
+<!-- <div class="add"> -->
+<!-- <form method="POST" class="well form-horizontal" enctype="multipart/form-data" action='/addwatchlist'> -->
+<!-- {% csrf_token %} -->
+<div class="search">
+	<form method="POST" enctype="multipart/form-data" action='/addwatchlist'>
+{% csrf_token %}
+<div class="input-group">
+  <div class="form-outline">
+    <input type="text" id="query" name="unique_name" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Add Student
+    <i class="fas fa-search"></i>
+  </button>
+</form>
+</div>
+</div>
+
+<!-- <input class="form-control" placeholder="username" style="width:300px;"type="text" name="unique_name"> -->
+<!-- <input type="submit" value="Add Student"> -->
+<!-- </form> -->
+<!-- </div> -->
+<div class="tbl">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">username</th>
+      <th scope="col">Name</th>
+      <th scope="col">Proposal link</th>
+      <th scope="col">proposal status</th>
+      <th scope="col">git url</th>
+      <th scope="col">Report link</th>
+      <th scope="col">report status</th>
+      <th scope="col">updated time</th>
+      <th scope="col">delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+	    {% for student in watch %}
+    <th scope="row">{{student.project.id}}</th>
+      <td><a href="/selection/{{student.project.id}}"> {{student.project.unique_name}}</a></td>
+      <td>{{student.project.name}}</td>
+      <td><a href="/media/{{student.project.proposal_file}}" target="_blank">Proposal</a></td>
+      <td>{{student.project.selected_proposal_condition}}</td>
+      <td><a href="{{student.project.git_url}}">{{student.git_url}}</a></td>
+      <td><a href="/media/{{student.project.report_file}}" target="_blank">Report</a></td>
+      <td>{{student.project.selected_report_condition}}</td>
+      <td>{{student.project.updated_date}}</td>
+      <td><a href="/deletewatchlist/{{student.id}}">Delete</a></td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+<!-- <a href="delete/{{student.id}}">Delete</a> -->
+</br>
+</div>
+
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends 'main.html'%}
+{% block content %}
+<style>
+.selection{
+	display:flex;
+	align-content:center;
+	align-items:space-around;
+}
+</style>
+
+<div class="selection">
+<div>
+<form method="post" enctype="multipart/form-data" action='/selection_update/{{student.id}}'>
+{% csrf_token %}
+<fieldset style="position:absolute; left:200px; top:200px; width:50%;">
+
+<!-- Form Name -->
+<legend>Proposal</legend>
+
+
+<!-- Text input-->
+
+<div class="form-group" >
+  <label class="col-md-4 control-label">Proposal: <a href="/media/{{student.proposal_file}}" target="_blank">Proposal file</a>
+</label>
+
+
+<!-- text area-->
+<div class="form-group">
+  <label class="col-md-4 control-label">Statement</label>
+    <div class="col-md-4 inputGroupContainer">
+	      <div class="form-group">
+    <select class="form-control" name="selected_proposal_condition" id="exampleFormControlSelect1">
+      <option>selected</option>
+      <option>not_selected</option>
+    </select>
+  </div>
+  </div>
+</div>
+
+<!-- Text area -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Reasons</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+    <textarea class="form-control" name="proposal_reason" id="exampleFormControlTextarea1" rows="6"></textarea>
+  </div>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    </div>
+    </div>
+
+
+<div>
+<form method="post" enctype="multipart/form-data" action='/report_selection_update/{{student.id}}'>
+{% csrf_token %}
+<fieldset style="position:absolute; right:200px; top:200px; width:50%;">
+
+<!-- Form Name -->
+<legend>Report</legend>
+
+<!-- Text input-->
+
+<div class="form-group" >
+  <label class="col-md-4 control-label">Report: <a href="/media/{{student.report_file}}" target="_blank">Report file</a>
+</label>
+
+<!-- text area-->
+<div class="form-group">
+  <label class="col-md-4 control-label">Statement</label>
+    <div class="col-md-4 inputGroupContainer">
+	      <div class="form-group">
+    <select class="form-control" name="selected_report_condition" id="exampleFormControlSelect1">
+      <option>selected</option>
+      <option>not_selected</option>
+    </select>
+  </div>
+  </div>
+</div>
+
+<!-- Text area -->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">Reasons</label>
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+    <textarea class="form-control" name="report_reason" id="exampleFormControlTextarea1" rows="6"></textarea>
+  </div>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group"> <label class="col-md-4 control-label"></label> <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+    </div>
+{% endblock %}
+<form method="post" enctype="multipart/form-data" action='/selection_update/{{student.id}}'>
+{% csrf_token %}
+	<hr>
+	{{object.name}}
+<h1>Proposal<h1>
+		<hr>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Reasons</label>
+    <textarea class="form-control" name="proposal_reason" id="exampleFormControlTextarea1" rows="6"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Statement</label>
+    <select class="form-control" name="selected_proposal_condition" id="exampleFormControlSelect1">
+      <option>selected</option>
+      <option>not_selected</option>
+    </select>
+  </div>
+  <input type="submit">
+</form>
+<br>
+<br>
+
+
+<form method="post" enctype="multipart/form-data" action='/report_selection_update/{{student.id}}'>
+{% csrf_token %}
+<h1>Proposal<h1>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Reasons</label>
+    <textarea class="form-control" name="report_reason" id="exampleFormControlTextarea1" rows="6"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Statement</label>
+    <select class="form-control" name="selected_report_condition" id="exampleFormControlSelect1">
+      <option>selected</option>
+      <option>not_selected</option>
+    </select>
+  </div>
+  <input type="submit">
+</form>
+</div>
+</div>

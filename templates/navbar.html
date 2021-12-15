@@ -1,0 +1,91 @@
+<style>
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding:0;
+}
+li,a, button{
+	font-weight: 500;
+	font-size:20px;
+	color:#000;
+}
+header {
+	display:flex;
+	justify-content:space-between;
+	align-items: center;
+	padding:5px 10%;
+	background-color: #24252A;
+}
+.nav__links{
+	list-style:none;
+}
+
+.nav__links li{
+	display: inline-block;
+	color:#fff;
+	padding:0px 20px;
+}
+
+.nav__links li a{
+	transition: all 0.3s ease 0s;
+	color:#fff;
+	text-decoration:none;
+	margin-top:50px;
+}
+.nav__links li a:hover{
+	color:#0088a9
+}
+
+button{
+	padding: 9px 25px;
+	background-color: rgba(0,136,169,1);
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	transition : all 0.3s ease 0s;
+}
+
+button:hover{
+	background-color: rgba(0,136,169,0.8);
+}
+.logo{
+	color: #FFF;
+}
+
+</style>
+
+
+
+<header>
+	<!-- <img class="logo" src="" alt="logo"> -->
+	<div class="logo">
+		<a href="/" style="text-decoration:none;color:#fff;">NCCS</a>
+	</div>
+	<nav>
+		<ul class="nav__links">
+	{% if user.groups.all.0.name == "Student" %}
+			<li><a href="/projectadd">New Project</a></li>
+			<li><a href="/update/{{student.id}}">Edit Project</a></li>
+			<!-- <li><a href="#">Services</a></li> -->
+	{% endif %}
+	{% if user.groups.all.0.name == "Mentors" %}
+	   	<li><a href="/watchlist">Watchlist</a></li>
+	{% endif %}
+		</ul>
+	</nav>
+	<a class="cta" style="color:#fff;" href="/logout" ><button>logout</button></a>
+</header>
+	<!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top"> -->
+<!--   <div class="container-fluid"> -->
+<!--     <div class="navbar-header"> -->
+<!--       <a class="navbar-brand" href="#">PROJECT MANAGMENT</a> -->
+<!--     </div> -->
+<!--       <ul class="main-nav"> -->
+<!-- 	{% if user.groups.all.0.name == "Student" %} -->
+<!--           	<li><a href="/projectadd">New Project</a></li> -->
+<!-- 	  	<li><a href="/update/{{student.id}}">Update Project</a></li> -->
+<!-- 	{% endif %} -->
+<!--           <li><a href="/logout">Logout</a></li> -->
+<!--       </ul> -->
+<!--   </div> -->
+<!-- </nav> -->

@@ -1,0 +1,10 @@
+<form method="post" enctype="multipart/form-data" action='/selection_update'>
+{% csrf_token %}
+	name:<input type="text" name="name"></br>
+	<input type="file" method="post" name="proposal_file"></br>
+	git_url:<input type="text" name="git_url"></br>
+	ref:<input type="text" name="reference"></br>
+	tools<input type="text" name="tools"></br>
+	<input type="file" method="post" name="proposal_file">
+	<input type="submit"/>
+</form>
